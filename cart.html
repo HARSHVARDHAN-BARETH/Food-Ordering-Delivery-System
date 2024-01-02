@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDelivery Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    .main{
+        width: 100%;
+        height: 100vh;
+        background-color: #fff;
+    }
+    .heading{
+        width: 100%;
+        height: 100px;
+        padding: 0 10vw;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .heading h1{
+        font-size: 2.5vw;
+        color: #f94a3d;
+    }
+    table {
+        width: 80%;
+        border-collapse: collapse;
+    }
+    
+    th{
+        color: crimson;
+        font-size: 1.5vw;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+    img {
+        max-width: 50px;
+        height: auto;
+    }
+    button{
+        background-color: crimson;
+        width: 500px;
+        color: #fff;
+        height: 60px;
+        cursor: pointer;
+        border: 2px solid #fff;
+        font-size: 20px;
+        margin: 20px auto;
+
+    }  
+    .heading a{
+        text-decoration: none;
+        font-size: 2vw;
+        margin-right: 20vw;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100%;
+    }
+</style>
+<body>
+    <div class="main">
+        <div class="heading">
+            <a href="/">Go back</a>
+            <h1>Your Shopping Cart</h1>
+        </div>
+        <div class="container">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <!-- Add more table headers if needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in product %}
+                    <tr>
+                        <td><img src="{{ i.image }}" alt="{{ i.name }}"></td>
+                        <td>{{ i.name }}</td>
+                        <td>${{ i.price }}</td>
+                        <td>{{ i.description }}</td>
+                        <!-- Add more table cells for additional details -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <!-- Button for placing the order -->
+        <button onclick="placeOrder()">Place Your Order</button>
+    
+    </div>
+</div>
+
+
+    <script>
+        function placeOrder() {
+            // You can add JavaScript logic here for handling the order placement
+            alert("Order placed successfully!"); // For example, show an alert
+        }
+    </script>
+
+</body>
+</html> 
+
+
+<!-- cart.html -->
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <style>
+        /* CSS for layout - Table */
+        table {
+            width: 80%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+        img {
+            max-width: 50px;
+            height: auto;
+        }
+        button{
+            background-color: green;
+            width: 500px;
+            height: 60px;
+            margin-top: 20px;
+            font-size: 20px;
+            margin: 20px auto;
+
+        }  
+        
+    </style>
+</head>
+<body>
+    <h1>Your Shopping Cart</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <!-- Add more table headers if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for product_id, details in cart.items %}
+                <tr>
+                    <td><img src="{{ details.image }}" alt="{{ details.name }}"></td>
+                    <td>{{ details.name }}</td>
+                    <td>${{ details.price }}</td>
+                    <td>{{ details.description }}</td>
+                    <!-- Add more table cells for additional details -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Button for placing the order -->
+    <button onclick="placeOrder()">Place Your Order</button>
+
+    <script>
+        function placeOrder() {
+            // You can add JavaScript logic here for handling the order placement
+            alert("Order placed successfully!"); // For example, show an alert
+        }
+    </script>
+
+</body>
+</html> {% endcomment %}
